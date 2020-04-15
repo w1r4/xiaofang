@@ -1,0 +1,11 @@
+#!/bin/sh
+
+start()
+{
+echo "Starting listening..."
+gpio_ms1 -n 7 -m 1 -v 1
+tcpsvd 0.0.0.0 11032 snx_audio_playback -d s16 -s 32k -f - &
+echo "$!" > "$PIDFILE"
+}
+
+start

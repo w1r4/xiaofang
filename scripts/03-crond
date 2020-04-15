@@ -1,0 +1,13 @@
+#!/bin/sh
+
+start()
+{
+echo "Starting crond..."
+mkdir -p '/var/spool/cron/crontabs'
+ln -s /media/mmcblk0p2/data/etc/crontab /var/spool/cron/crontabs/root
+crond
+ntpd -p time.google.com
+echo "$!" > "$PIDFILE"
+}
+
+start
